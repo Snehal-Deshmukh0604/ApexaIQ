@@ -1,0 +1,6 @@
+BankAccount(holder='John Doe', balance=$1000.00)
+Deposited $500.00. New balance: $1500.00
+Deposited $250.50. New balance: $1750.50
+Withdrew $300.00. New balance: $1450.50
+Account balance for John Doe: $1450.50
+Transaction failed: Insufficient balance: $1450.5. Required: $2000.0
