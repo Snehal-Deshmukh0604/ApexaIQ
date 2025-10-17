@@ -1,0 +1,15 @@
+=== REST API CLIENT DEMO ===
+
+1. FETCHING USERS:
+   - Leanne Graham | Sincere@april.biz
+   - Ervin Howell | Shanna@melissa.tv
+   - Clementine Bauch | Nathan@yesenia.net
+
+2. FETCHING POSTS FOR USER 1:
+   - sunt aut facere repellat provident occaecati excepturi optio reprehenderit
+   - qui est esse
+
+3. CREATING NEW POST:
+   SUCCESS! Post created successfully!
+   Post ID: 101
+   Title: My Test Post

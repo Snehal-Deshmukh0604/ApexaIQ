@@ -1,0 +1,26 @@
+=== Library Management System Demo ===
+
+--- Books in City Central Library Library ---
+  - The Great Gatsby by F. Scott Fitzgerald [Available]
+  - To Kill a Mockingbird by Harper Lee [Available]
+  - 1984 by George Orwell [Available]
+  - Pride and Prejudice by Jane Austen [Available]
+
+--- Borrowing Books ---
+Successfully borrowed 'The Great Gatsby'
+Successfully borrowed '1984'
+
+--- Books in City Central Library Library ---
+  - The Great Gatsby by F. Scott Fitzgerald [Borrowed (Due: 2025-10-31)]
+  - To Kill a Mockingbird by Harper Lee [Available]
+  - 1984 by George Orwell [Borrowed (Due: 2025-10-31)]
+  - Pride and Prejudice by Jane Austen [Available]
+
+--- Returning Books ---
+Book 'The Great Gatsby' returned successfully
+
+--- Books in City Central Library Library ---
+  - The Great Gatsby by F. Scott Fitzgerald [Available]
+  - To Kill a Mockingbird by Harper Lee [Available]
+  - 1984 by George Orwell [Borrowed (Due: 2025-10-31)]
+  - Pride and Prejudice by Jane Austen [Available]

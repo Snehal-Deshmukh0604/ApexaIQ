@@ -1,0 +1,15 @@
+=== Fibonacci Series Demonstration ===
+
+--- Iterative Approach (10 terms) ---
+Fibonacci series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+--- Recursive Approach (8 terms) ---
+Fibonacci series: [0, 1, 1, 2, 3, 5, 8, 13]
+
+--- Generator Approach (12 terms) ---
+Fibonacci series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+--- Large Series (20 terms) ---
+Iterative result: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]
+Generator result: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]
+Results match: True
