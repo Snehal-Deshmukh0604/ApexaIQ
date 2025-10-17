@@ -1,0 +1,243 @@
+### Python Basics
+
+- Syntax and variables: Python uses dynamic typing. Variables are created by assignment, e.g., `x = 10`, `name = "Snehal"`.
+- Datatypes:
+    - int: whole numbers, arbitrary precision
+    - float: double-precision floating point
+    - string: immutable text sequences, e.g., `"hello"`
+    - list: ordered, mutable sequences, e.g., `[1, 2, 3]`
+    - tuple: ordered, immutable sequences, e.g., `(1, 2, 3)`
+    - dict: key-value mapping, e.g., `{"a": 1}`
+    - set: unordered collection of unique items, e.g., `{1, 2, 3}`
+
+### Conditional Statements
+
+- if / elif / else control flow based on boolean expressions.
+
+```python
+x = 7
+if x > 10:
+	print("big")
+elif 5 < x <= 10:
+	print("medium")
+else:
+	print("small")
+```
+
+### Loops
+
+- for: iterate over iterables. while: repeat while condition is True.
+- break: exit loop. continue: skip to next iteration.
+
+```python
+for i in range(5):
+	if i == 3:
+		continue
+	print(i)
+
+j = 0
+while j < 5:
+	if j == 3:
+		break
+	j += 1
+```
+
+### Functions
+
+- Define with `def`. Return values with `return`.
+- Default args evaluated at definition time. Avoid mutable defaults.
+- *args collects extra positional args.* *kwargs collects extra keyword args.
+
+```python
+def greet(name, punctuation="!"):
+	return f"Hello, {name}{punctuation}"
+
+def demo(a, *args, **kwargs):
+	return a, args, kwargs
+```
+
+### Exception Handling
+
+- Use try / except / finally. Catch specific exceptions first. Optionally use `else`.
+
+```python
+try:
+	result = 10 / x
+except ZeroDivisionError:
+	result = None
+else:
+	print("no exception")
+finally:
+	print("cleanup")
+```
+
+### Decorators
+
+- Functions that wrap other functions to add behavior.
+
+```python
+import functools
+
+def log_calls(func):
+	@functools.wraps(func)
+	def wrapper(*args, **kwargs):
+		print(f"calling {func.__name__}")
+		return func(*args, **kwargs)
+	return wrapper
+
+@log_calls
+def add(a, b):
+	return a + b
+```
+
+### OOP (Object-Oriented Programming)
+
+- Classes encapsulate data and behavior. Use `__init__` for initialization. Support inheritance and polymorphism.
+
+```python
+class Shape:
+	def area(self):
+		raise NotImplementedError
+
+class Rectangle(Shape):
+	def __init__(self, w, h):
+		self.w = w; self.h = h
+	def area(self):
+		return self.w * self.h
+```
+
+### Comprehensions
+
+- List: `[expr for x in it if cond]`
+- Dict: `{k: v for k, v in it if cond}`
+
+```python
+squares = [x*x for x in range(10) if x % 2 == 0]
+index = {ch: i for i, ch in enumerate("abc")}
+```
+
+### Iterators and Generators
+
+- Iterator: object with `__iter__` and `__next__`.
+- Generator: uses `yield` to produce lazy sequences.
+
+```python
+def countdown(n):
+	while n > 0:
+		yield n
+		n -= 1
+```
+
+### Virtual Environments and pip (optional)
+
+- Create env: `python -m venv .venv`
+- Activate: macOS/Linux `source .venv/bin/activate`, Windows  `.venv\\Scripts\\activate`
+- Install packages: `pip install requests`
+
+### Standard Libraries (optional)
+
+- Useful modules: `os`, `sys`, `pathlib`, `datetime`, `json`, `re`, `collections`, `itertools`, `functools`, `logging`, `subprocess`.
+
+---
+
+### Coding Standards
+
+- Naming Conventions
+    - Variables and functions: snake_case
+    - Constants: UPPER_SNAKE_CASE
+    - Classes: PascalCase
+- Docstrings
+    - Use triple quotes. One-line summary, then details and examples.
+
+```python
+def add(a: int, b: int) -> int:
+	"""Add two integers and return the sum.
+
+	Args:
+		a: First integer.
+		b: Second integer.
+
+	Returns:
+		Sum of a and b.
+	"""
+	return a + b
+```
+
+- Comments
+    - Explain "why", not "what". Keep in sync with code.
+- Types of Testing
+    - Unit, integration, end-to-end, regression, performance.
+    - Use `pytest` for unit tests. Aim for fast, deterministic tests.
+- PEP 8
+    - 4 spaces indentation. Max line length commonly 79 or 99.
+    - Meaningful names. Imports at top, grouped standard lib, third-party, local.
+    - Prefer `is` for None checks. Use f-strings.
+- SOLID and DRY
+    - Single Responsibility: each module/class does one thing.
+    - Open/Closed: extend without modifying existing code.
+    - Liskov Substitution: subclasses honor base contracts.
+    - Interface Segregation: keep interfaces small and focused.
+    - Dependency Inversion: depend on abstractions.
+    - DRY: avoid duplication via functions, abstractions, and tests.
+
+---
+
+### APIs
+
+- What is an API?
+    - A contract for interacting with software via defined requests and responses.
+- Types of APIs
+    - REST, GraphQL, gRPC, SOAP. Choose based on use case and constraints.
+- HTTP Status Codes
+    - 2xx success, 3xx redirection, 4xx client errors, 5xx server errors.
+    - Common: 200 OK, 201 Created, 204 No Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, 429 Too Many Requests, 500 Internal Server Error.
+- Response Formats
+    - JSON is standard for web APIs. XML and Protocol Buffers also used.
+- Authentication
+    - API keys, Basic, OAuth 2.0, JWT, mTLS. Prefer short-lived tokens.
+- Versioning and Security
+    - Version in path (`/v1`) or header. Use TLS. Validate inputs. Rate limit. Log with PII care.
+- CRUD Operations
+    - REST mapping: POST create, GET read, PUT/PATCH update, DELETE remove.
+- Postman (optional)
+    - Collections to document and test APIs. Environments and variables for contexts.
+- Optimization and Efficiency
+    - Pagination, filtering, partial responses, caching (ETag, Cache-Control), compression, idempotency keys, bulk endpoints, HATEOAS where relevant.
+- Python Requests Library
+
+```python
+import requests
+
+BASE_URL = "https://api.example.com/items"
+headers = {"Authorization": "Bearer <TOKEN>", "Accept": "application/json"}
+
+# GET with query params and timeout
+resp = requests.get(BASE_URL, params={"limit": 10}, headers=headers, timeout=10)
+resp.raise_for_status()  # raises for 4xx/5xx
+items = resp.json()
+
+# POST with JSON body and idempotency key
+payload = {"title": "Buy milk", "due_date": "2025-10-20"}
+resp = [requests.post](http://requests.post)(
+	BASE_URL,
+	json=payload,
+	headers={**headers, "Idempotency-Key": "123e4567"},
+	timeout=10,
+)
+resp.raise_for_status()
+created = resp.json()
+print(created.get("id"))  # server-generated id
+```
+
+---
+
+### Extra Topics (Optional)
+
+- SDLC
+    - Phases: requirements, design, implementation, testing, deployment, maintenance. Iterate with feedback.
+- Agile Basics
+    - Iterative delivery, small increments, feedback loops. Scrum ceremonies: planning, daily, review, retro. Kanban focuses on flow and WIP limits.
+- Version Control
+    - Git basics: clone, branch, commit small changes, PRs, code reviews. Branch strategies: trunk-based or GitFlow.
+- Software Architecture
+    - Layered architectures, microservices vs monoliths, modular boundaries, domain-driven design, event-driven patterns. Cross-cutting concerns: logging, monitoring, configuration, resilience (timeouts, retries, circuit breakers).
